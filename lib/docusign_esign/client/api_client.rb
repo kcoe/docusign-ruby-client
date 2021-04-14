@@ -259,8 +259,8 @@ module DocuSign_eSign
     def build_request_url(path, opts)
       # Add leading and trailing slashes to path
       path = "/#{path}".gsub(/\/+/, '/')
-      return URI.encode("https://" + self.get_oauth_base_path + path) if opts[:oauth]
-      URI.encode(@config.base_url + path)
+      return URI.encode_www_form_component("https://" + self.get_oauth_base_path + path) if opts[:oauth]
+      URI.encode_www_form_component(@config.base_url + path)
     end
 
     # Builds the HTTP request body
